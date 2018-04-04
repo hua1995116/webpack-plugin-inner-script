@@ -1,0 +1,24 @@
+{
+  "name": "webpack-plugin-inner-script",
+  "version": "1.0.0",
+  "description": "a plugin for webpack ",
+  "main": "index.js",
+  "devDependencies": {
+    "html-webpack-plugin": "^2.16.0",
+    "webpack": "^1.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hua1995116/webpack-plugin-inner-script.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin"
+  ],
+  "author": "huayifeng <qiufenghyf@163.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hua1995116/webpack-plugin-inner-script/issues"
+  },
+  "homepage": "https://github.com/hua1995116/webpack-plugin-inner-script#readme"
+}
