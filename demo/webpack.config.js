@@ -11,7 +11,8 @@ module.exports = {
     new HtmlWebpackPlugin(),
     new WebpackPluginInnerScript({
       innerScript: true,
-      ignore: []
+      ignore: [],
+      include: []
     })
   ]
 }
