@@ -11,8 +11,10 @@ module.exports = {
     new HtmlWebpackPlugin(),
     new WebpackPluginInnerScript({
       innerScript: true,
-      ignore: [],
-      include: [/index/]
+      include: '*',
+      attr: {
+        async: "async"
+      }
     })
   ]
 }
