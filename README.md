@@ -1,4 +1,4 @@
-# a plugin for webpack 
+#  inner script webpack plugin
 
 # config 
 
@@ -21,8 +21,25 @@ module.exports = {
     new HtmlWebpackPlugin(),
     new WebpackPluginInnerScript({
       innerScript: true,
-      ignore: []
+      ignore: [],
+      include: [/index/]
     })
   ]
 }
+```
+# desc
+
+```
+normal
+<script type="text/javascript" src="index_bundle.js"></script>
+
+now
+<script type="text/javascript">
+var oHead = document.querySelector('body'),
+    oScript = document.createElement('script');
+oScript.type = "text/javascript";
+oScript.src = "index_bundle.js";
+oHead.appendChild(oScript);
+</script>
+
 ```

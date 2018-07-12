@@ -12,7 +12,7 @@ module.exports = {
     new WebpackPluginInnerScript({
       innerScript: true,
       ignore: [],
-      include: []
+      include: [/index/]
     })
   ]
 }
