@@ -25,40 +25,39 @@ WebpackPluginInnerScript.prototype.innerScript = function (
     htmlPluginData,
     callback
 ) {
+    const options = Object.assign({
+        innerScript: true,
+        include: '*',
+        attr: {}
+    }, this.options);
     ['head', 'body'].map(position => {
         for (var i = 0; i < htmlPluginData[position].length; i++) {
-            let isIgnore = false;
             const url = htmlPluginData[position][i].attributes.src;
             const template = htmlPluginData.outputName;
 
             let isInclude = false;
-            if (
-                this.options.hasOwnProperty('include') &&
-                this.options.include.length > 0
-            ) {
-                // 全量进行覆盖
-                if(this.options.include === '*') {
-                    isInclude = true
-                } else {
-                    this.options.include.map(item => {
-                        if (istype(item, 'RegExp') && template.match(item)) {
-                            isInclude = true;
-                        }
-                    });
-                }
+            // 全量进行覆盖
+            if(options.include === '*') {
+                isInclude = true
+            } else {
+                options.include.map(item => {
+                    if (istype(item, 'RegExp') && template.match(item)) {
+                        isInclude = true;
+                    }
+                });
             }
             // 确保作用的是script
             if (isInclude && htmlPluginData[position][i].attributes.type === 'text/javascript') {
                 const attrs = [];
-                const attrsName = Object.keys(this.options.attr || {});
+                const attrsName = Object.keys(options.attr);
                 attrsName.map(item => {
                     const obj = {};
                     obj["key"] = item;
-                    obj["value"] = this.options.attr[item];
+                    obj["value"] = options.attr[item];
                     attrs.push(obj);
                 })
                 // 如果需要改成行内形式
-                if(this.options.hasOwnProperty('innerScript') && this.options.innerScript) {
+                if(options.innerScript) {
                     let innerAttrs = '';
                     attrs.map(item => {
                         innerAttrs += `oScript.${item.key} = "${item.value}";`;

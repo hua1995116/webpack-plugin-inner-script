@@ -9,12 +9,6 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin(),
-    new WebpackPluginInnerScript({
-      innerScript: true,
-      include: '*',
-      attr: {
-        async: "async"
-      }
-    })
+    new WebpackPluginInnerScript()
   ]
 }
